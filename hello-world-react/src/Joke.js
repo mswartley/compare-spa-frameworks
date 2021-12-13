@@ -1,27 +1,35 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 const Joke = () => {
-    const [counter, setCounter] = useState(0);
+    const [waiting, setWaiting] = useState(false);
     const [setup, setSetup] = useState('');
     const [punchLine, setPunchLine] = useState('');
 
-    useEffect(() => {
+    const fetchJoke = async () => {
+        setWaiting(true);
         setSetup('Loading next joke...');
         setPunchLine('Wait for it...');
-        fetch('https://v2.jokeapi.dev/joke/Any?type=twopart')
+        fetch('https://v2.jokeapi.dev/joke/Any?safe-mode&type=twopart')
             .then(response => response.json())
             .then(joke => {
                 setSetup(joke.setup);
-                setTimeout(() => setPunchLine(joke.delivery), 5000);
+                setTimeout(() => {
+                    setPunchLine(joke.delivery);
+                    setWaiting(false);
+                }, 5000);
             });
-    }, [counter]);
+    };
+
+    useEffect(() => {
+        fetchJoke();
+    }, []);
 
     return <>
         <h3>Setup</h3>
         <p>{setup}</p>
         <h3>Punch Line</h3>
         <p>{punchLine}</p>
-        <button onClick={() => setCounter(counter + 1)}>Next Joke</button>
+        <button onClick={() => fetchJoke()} disabled={waiting}>Next Joke</button>
     </>
 };
 
