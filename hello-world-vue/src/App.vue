@@ -3,6 +3,7 @@
     <h1>Hello VueJS!</h1>
     <button @click.stop="showCounter = !showCounter">{{ showCounterButtonText }}</button>
     <button :style="{marginLeft: '4px'}" @click.stop="showTime = !showTime">{{ this.showOrHide(showTime) }} Time</button>
+    <button :style="{marginLeft: '4px'}" @click.stop="showJoke = !showJoke">{{ this.showOrHide(showJoke) }} Joke</button>
     <template v-if="showCounter">
       <hr/>
       <Counter :initial-count="13"></Counter>
@@ -11,8 +12,10 @@
       <hr/>
       <CurrentTime/>
     </template>
-    <hr/>
-    <Joke/>
+    <template v-if="showJoke">
+      <hr/>
+      <Joke/>
+    </template>
     <hr/>
   </div>
 </template>
@@ -32,6 +35,7 @@ export default {
   data: () => ({
     showCounter: true,
     showTime: true,
+    showJoke: true,
   }),
   computed: {
     showCounterButtonText: function () {

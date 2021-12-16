@@ -4,7 +4,7 @@
     <p>{{ setup }}</p>
     <h3>Punch Line</h3>
     <p>{{ punchLine }}</p>
-    <button @click.stop="fetchJoke" :disabled="waiting">Next Joke</button>
+    <button @click.stop="fetchJoke" :disabled="!joke || waiting">Next Joke</button>
   </div>
 </template>
 
@@ -12,21 +12,26 @@
 export default {
   name: "Joke",
   data: () => ({
-    setup: '',
-    punchLine: '',
+    joke: null,
     waiting: false,
   }),
+  computed: {
+    setup: function() {
+      return this.joke ? this.joke.setup : 'Loading a joke...' ;
+    },
+    punchLine: function() {
+      return this.joke && !this.waiting ? this.joke.delivery : 'Wait for it...';
+    }
+  },
   methods: {
     fetchJoke() {
-      this.waiting = true;
-      this.setup = 'Loading next joke...';
-      this.punchLine = 'Wait for it...';
+      this.joke = null;
       fetch('https://v2.jokeapi.dev/joke/Any?safe-mode&type=twopart')
           .then(response => response.json())
           .then(joke => {
-            this.setup = joke.setup;
+            this.waiting = true;
+            this.joke = joke;
             setTimeout(() => {
-              this.punchLine = joke.delivery;
               this.waiting = false;
             }, 5000);
           });
