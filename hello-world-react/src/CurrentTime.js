@@ -5,14 +5,14 @@ const CurrentTime = () => {
 
     useEffect(() => {
        const intervalId = setInterval(() => setTime(new Date()), 1000);
-       console.log(`Started timer ${intervalId}.`);
+       console.log(`Started timer ${intervalId}`);
        return () => {
            console.log(`Clearing timer ${intervalId}`);
            clearInterval(intervalId);
        }
     }, []);
 
-    return <h3>Current Time: {time.toLocaleTimeString()}</h3>
+    return <h3 className="text-xl font-normal">Current Time: {time.toLocaleTimeString()}</h3>
 };
 
 export default CurrentTime;
