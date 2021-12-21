@@ -1,8 +1,10 @@
 import {useState, useEffect} from 'react';
 import Button from './Button';
+import ErrorDialog from "./ErrorDialog";
 
 const Joke = () => {
     const [joke, setJoke] = useState(null);
+    const [error, setError] = useState(null);
     const [waitingForPunchline, setWaitingForPunchline] = useState(false);
     const punchlineIsReady = joke && !waitingForPunchline;
 
@@ -11,9 +13,15 @@ const Joke = () => {
         setWaitingForPunchline(true);
         fetch('https://v2.jokeapi.dev/joke/Any?safe-mode&type=twopart')
             .then(response => response.json())
-            .then(joke => setJoke(joke))
+            .then(joke => {
+                if (joke.error) {
+                    throw joke;
+                }
+                setJoke(joke)
+            })
             .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
+                console.error('Error fetching the next joke', error);
+                setError(error);
             })
     };
 
@@ -37,6 +45,7 @@ const Joke = () => {
             <h3 className={`ml-3 text-lg font-normal${!punchlineIsReady ? ' text-gray-500' : '' }`}>{punchlineIsReady ? joke.delivery : 'Wait for it...'}</h3>
         </div>
         <Button onClick={() => fetchJoke()} disabled={waitingForPunchline}>Next Joke</Button>
+        <ErrorDialog open={error !== null} onClose={() => setError(null)} error={error}/>
     </>
 };
 
