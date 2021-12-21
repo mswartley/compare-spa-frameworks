@@ -17,6 +17,7 @@
       <Joke/>
     </template>
     <hr/>
+    <Form/>
   </div>
 </template>
 
@@ -24,13 +25,15 @@
 import Counter from './components/Counter.vue'
 import CurrentTime from "@/components/CurrentTime";
 import Joke from "@/components/Joke";
+import Form from "@/components/Form";
 
 export default {
   name: 'App',
   components: {
     Joke,
     CurrentTime,
-    Counter
+    Counter,
+    Form
   },
   data: () => ({
     showCounter: true,
