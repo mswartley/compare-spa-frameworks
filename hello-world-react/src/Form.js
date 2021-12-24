@@ -44,7 +44,7 @@ const Form = () => {
                     <label htmlFor="checkbox">Checkbox</label>
                     <div>
                         <input type="checkbox" {...register('checkbox')}/>
-                        <label className="ml-2" htmlFor="jack">Yes?</label><br/>
+                        <span className="ml-2">Yes?</span>
                     </div>
                     <div className="col-span-3 text-gray-500">
                         {checkbox ? "Yes!" : "Sadly, no."}
