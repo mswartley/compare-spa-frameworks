@@ -1,23 +1,25 @@
 <template>
-  <div id="app">
-    <h1>Hello VueJS!</h1>
-    <button @click.stop="showCounter = !showCounter">{{ showCounterButtonText }}</button>
-    <button :style="{marginLeft: '4px'}" @click.stop="showTime = !showTime">{{ this.showOrHide(showTime) }} Time</button>
-    <button :style="{marginLeft: '4px'}" @click.stop="showJoke = !showJoke">{{ this.showOrHide(showJoke) }} Joke</button>
-    <template v-if="showCounter">
-      <hr/>
-      <Counter :initial-count="13"></Counter>
-    </template>
-    <template v-if="showTime">
-      <hr/>
-      <CurrentTime/>
-    </template>
-    <template v-if="showJoke">
-      <hr/>
-      <Joke/>
-    </template>
-    <hr/>
-    <Form/>
+  <div id="app" class="text-gray-900 mx-4 my-4 max-w-5xl lg:mx-auto">
+    <nav>
+      <NavButton :onClick="() => showCounter = !showCounter">{{ showCounterButtonText }}</NavButton>
+      <NavButton :onClick="() => showTime = !showTime">{{ showOrHide(showTime) }} Time</NavButton>
+      <NavButton :onClick="() => showJoke = !showJoke">{{ showOrHide(showJoke) }} Joke</NavButton>
+    </nav>
+    <main class="mt-4">
+      <h1 class="text-4xl font-bold">Hello VueJS!</h1>
+      <Section v-if="showCounter">
+        <Counter :initial-count="0"></Counter>
+      </Section>
+      <Section v-if="showTime">
+        <CurrentTime/>
+      </Section>
+      <Section v-if="showJoke">
+        <Joke/>
+      </Section>
+      <Section>
+        <Form/>
+      </Section>
+    </main>
   </div>
 </template>
 
@@ -26,10 +28,14 @@ import Counter from './components/Counter.vue'
 import CurrentTime from "@/components/CurrentTime";
 import Joke from "@/components/Joke";
 import Form from "@/components/Form";
+import NavButton from "@/components/NavButton";
+import Section from "@/components/Section";
 
 export default {
   name: 'App',
   components: {
+    Section,
+    NavButton,
     Joke,
     CurrentTime,
     Counter,

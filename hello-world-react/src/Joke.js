@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import Button from './Button';
+import SpinButton from './SpinButton';
 import ErrorDialog from "./ErrorDialog";
 
 const Joke = () => {
@@ -41,10 +41,10 @@ const Joke = () => {
     return <>
         <div className="mb-2">
             <h3 className="text-xl font-normal">Okay, Here's a Joke</h3>
-            <h3 className="ml-3 text-md font-normal text-gray-700">{joke ? joke.setup : 'Loading a joke...'}</h3>
-            <h3 className={`ml-3 text-lg font-normal${!punchlineIsReady ? ' text-gray-500' : '' }`}>{punchlineIsReady ? joke.delivery : 'Wait for it...'}</h3>
+            <h3 className="ml-3 text-lg font-normal text-gray-800">{joke ? joke.setup : 'Loading a joke...'}</h3>
+            <h3 className={`ml-3 text-lg${!punchlineIsReady ? ' text-gray-500 animate-pulse' : ' font-medium' }`}>{punchlineIsReady ? joke.delivery : 'Calculating the optimal comedic timing'}</h3>
         </div>
-        <Button onClick={() => fetchJoke()} disabled={waitingForPunchline}>Next Joke</Button>
+        <SpinButton onClick={() => fetchJoke()} waiting={waitingForPunchline}>{waitingForPunchline ? 'Wait for it...' : 'Next Joke'}</SpinButton>
         <ErrorDialog open={error !== null} onClose={() => setError(null)} error={error}/>
     </>
 };

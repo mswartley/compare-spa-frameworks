@@ -1,5 +1,5 @@
 <template>
-  <h3>Current Time: {{ time.toLocaleTimeString() }}</h3>
+  <h3 class="text-xl font-normal">Current Time: {{ time.toLocaleTimeString() }}</h3>
 </template>
 
 <script>
