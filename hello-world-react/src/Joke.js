@@ -41,8 +41,8 @@ const Joke = () => {
     return <>
         <div className="mb-2">
             <h3 className="text-xl font-normal">Okay, Here's a Joke</h3>
-            <h3 className="ml-3 text-lg font-normal text-gray-800">{joke ? joke.setup : 'Loading a joke...'}</h3>
-            <h3 className={`ml-3 text-lg${!punchlineIsReady ? ' text-gray-500 animate-pulse' : ' font-medium' }`}>{punchlineIsReady ? joke.delivery : 'Calculating the optimal comedic timing'}</h3>
+            <h3 className="mt-2 ml-3 text-lg font-normal text-gray-800">{joke ? joke.setup : 'Loading a joke...'}</h3>
+            <h3 className={`ml-3 text-lg font-medium${!punchlineIsReady ? ' text-gray-500 animate-pulse' : ''}`}>{punchlineIsReady ? joke.delivery : 'Calculating the optimal comedic timing'}</h3>
         </div>
         <SpinButton onClick={() => fetchJoke()} waiting={waitingForPunchline}>{waitingForPunchline ? 'Wait for it...' : 'Next Joke'}</SpinButton>
         <ErrorDialog open={error !== null} onClose={() => setError(null)} error={error}/>
