@@ -1,24 +1,24 @@
 <template>
   <div id="app" class="text-gray-900 mx-4 my-4 max-w-5xl lg:mx-auto">
     <nav>
-      <NavButton :onClick="() => showCounter = !showCounter">{{ showCounterButtonText }}</NavButton>
-      <NavButton :onClick="() => showTime = !showTime">{{ showOrHide(showTime) }} Time</NavButton>
-      <NavButton :onClick="() => showJoke = !showJoke">{{ showOrHide(showJoke) }} Joke</NavButton>
+      <nav-button :onClick="() => showCounter = !showCounter">{{ showCounterButtonText }}</nav-button>
+      <nav-button :onClick="() => showTime = !showTime">{{ showOrHide(showTime) }} Time</nav-button>
+      <nav-button :onClick="() => showJoke = !showJoke">{{ showOrHide(showJoke) }} Joke</nav-button>
     </nav>
     <main class="mt-4">
       <h1 class="text-4xl font-bold">Hello VueJS!</h1>
-      <Section v-if="showCounter">
-        <Counter :initial-count="0"></Counter>
-      </Section>
-      <Section v-if="showTime">
-        <CurrentTime/>
-      </Section>
-      <Section v-if="showJoke">
-        <Joke/>
-      </Section>
-      <Section>
-        <Form/>
-      </Section>
+      <tile v-if="showCounter">
+        <counter :initial-count="0"></counter>
+      </tile>
+      <tile v-if="showTime">
+        <current-time/>
+      </tile>
+      <tile v-if="showJoke">
+        <joke/>
+      </tile>
+      <tile>
+        <sample-form/>
+      </tile>
     </main>
   </div>
 </template>
@@ -34,12 +34,12 @@ import Section from "@/components/Section";
 export default {
   name: 'App',
   components: {
-    Section,
-    NavButton,
-    Joke,
-    CurrentTime,
-    Counter,
-    Form
+    'tile': Section,
+    'nav-button': NavButton,
+    'joke': Joke,
+    'current-time': CurrentTime,
+    'counter': Counter,
+    'sample-form': Form
   },
   data: () => ({
     showCounter: true,

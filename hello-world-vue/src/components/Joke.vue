@@ -3,7 +3,7 @@
     <div class="mb-2">
       <h3 class="text-xl font-normal">Okay, Here's a Joke</h3>
       <h3 class="mt-1 ml-3 text-lg font-normal text-gray-800">{{ setup }}</h3>
-      <h3 class="ml-3 text-lg font-normal" :class="{ 'text-gray-500 animate-pulse': waiting }">{{ punchLine }}</h3>
+      <h3 class="ml-3 text-lg font-medium" :class="{ 'text-gray-500 animate-pulse': waiting }">{{ punchLine }}</h3>
     </div>
     <Button :onClick="() => fetchJoke()" :waiting="waiting">{{ waiting ? 'Wait for it...' : 'Next Joke' }}</Button>
   </div>
