@@ -12,6 +12,7 @@
           input-class="px-2 py-1 w-full shadow-sm border text-md border-gray-300 rounded-md"
           errors-class="col-span-2 lg:text-base text-sm text-red-500"
           validation="required"
+          validation-name="First Name"
       />
       <FormulateInput
           type="text"
@@ -22,7 +23,8 @@
           element-class="col-span-2"
           input-class="px-2 py-1 w-full shadow-sm border text-md border-gray-300 rounded-md"
           errors-class="col-span-2 lg:text-base text-sm text-red-500"
-          validation="required"
+          validation="required|min:5,length"
+          validation-name="Last Name"
       />
       <div class="mt-2 grid grid-cols-5 gap-4 items-baseline">
         <label>Checkbox</label>
@@ -71,6 +73,7 @@
           input-class="px-2 py-1 w-full shadow-sm border text-md border-gray-300 rounded-md"
           errors-class="col-span-2 lg:text-base text-sm text-red-500"
           validation="required"
+          validation-name="Select One"
       />
       <div class="mt-2 grid grid-cols-5 gap-4 items-baseline">
         <div class="col-start-2 col-span-4">

@@ -20,6 +20,9 @@
         <manual-form/>
       </tile>
       <tile>
+        <vee-validate-form/>
+      </tile>
+      <tile>
         <vue-formulate-form/>
       </tile>
     </main>
@@ -34,6 +37,7 @@ import Form from "@/components/Form";
 import NavButton from "@/components/NavButton";
 import Section from "@/components/Section";
 import VueFormulateForm from "@/components/VueFormulateForm";
+import VeeValidateForm from "@/components/VeeValidateForm";
 
 export default {
   name: 'App',
@@ -44,7 +48,8 @@ export default {
     'current-time': CurrentTime,
     'counter': Counter,
     'manual-form': Form,
-    'vue-formulate-form': VueFormulateForm
+    'vue-formulate-form': VueFormulateForm,
+    'vee-validate-form': VeeValidateForm,
   },
   data: () => ({
     showCounter: true,
