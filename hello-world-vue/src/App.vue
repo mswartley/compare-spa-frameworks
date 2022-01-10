@@ -17,7 +17,10 @@
         <joke/>
       </tile>
       <tile>
-        <sample-form/>
+        <manual-form/>
+      </tile>
+      <tile>
+        <vue-formulate-form/>
       </tile>
     </main>
   </div>
@@ -30,6 +33,7 @@ import Joke from "@/components/Joke";
 import Form from "@/components/Form";
 import NavButton from "@/components/NavButton";
 import Section from "@/components/Section";
+import VueFormulateForm from "@/components/VueFormulateForm";
 
 export default {
   name: 'App',
@@ -39,7 +43,8 @@ export default {
     'joke': Joke,
     'current-time': CurrentTime,
     'counter': Counter,
-    'sample-form': Form
+    'manual-form': Form,
+    'vue-formulate-form': VueFormulateForm
   },
   data: () => ({
     showCounter: true,
