@@ -1,44 +1,30 @@
-import {useState} from 'react';
-import NavButton from './NavButton';
-import Counter from './Counter';
-import CurrentTime from './CurrentTime';
-import Form from './Form';
-import Joke from './Joke';
-import Section from './Section';
-import SuccessDialog from "./SuccessDialog";
+import { NavLink, Outlet } from "react-router-dom";
 
 const App = () => {
-    const [showCounter, setShowCounter] = useState(true);
-    const [showTime, setShowTime] = useState(true);
-    const [showJoke, setShowJoke] = useState(true);
-    const [showDialog, setShowDialog] = useState(false);
-
-    return <div className="text-gray-900 mx-4 my-4 max-w-5xl lg:mx-auto">
-        <nav>
-            <NavButton onClick={() => setShowCounter(!showCounter)}>{showCounter ? 'Hide' : 'Show'} Counter</NavButton>
-            <NavButton onClick={() => setShowTime(!showTime)}>{showTime ? 'Hide' : 'Show'} Time</NavButton>
-            <NavButton onClick={() => setShowJoke(!showJoke)}>{showJoke ? 'Hide' : 'Show'} Joke</NavButton>
-            <NavButton onClick={() => setShowDialog(!showDialog)}>{showDialog ? 'Hide' : 'Show'} Dialog</NavButton>
-        </nav>
-        <main className="mt-4">
+    return (
+        <main className="mt-4 text-gray-900 mx-4 my-4 max-w-5xl lg:mx-auto">
             <h1 className="text-4xl font-bold">Hello React!</h1>
-            <Section show={showCounter}>
-                <Counter initialCount={5}/>
-            </Section>
-            <Section show={showTime}>
-                <CurrentTime/>
-            </Section>
-            <Section show={showJoke}>
-                <Joke/>
-            </Section>
-            <Section>
-                <Form/>
-            </Section>
-            <SuccessDialog open={showDialog} onClose={() => setShowDialog(false)}/>
+            <nav className="mt-4 space-x-6">
+                <AppNavLink to="/">Home</AppNavLink>
+                <AppNavLink to="/simple">Simple Components</AppNavLink>
+                <AppNavLink to="/jokes">Jokes</AppNavLink>
+                <AppNavLink to="/forms">Forms</AppNavLink>
+                <AppNavLink to="/dialogs">Dialogs</AppNavLink>
+            </nav>
+            <div className="mt-5">
+                <Outlet/>
+            </div>
         </main>
-    </div>;
+    );
 }
 
+const AppNavLink = ({to, children}) => {
+    return (
+        <NavLink to={to} className={({isActive}) => "border-b-2 px-1 py-1.5 " + (isActive ? "border-black text-gray-900" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700")}>
+            {children}
+        </NavLink>
+    );
+}
 // const useErrorHandler = () => {
 //     [error, setError] = useState();
 //     [showErrorDialog, setShowErrorDialog] = useState(false);
