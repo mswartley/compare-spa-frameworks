@@ -7,4 +7,3 @@ Well, only 2 SPA frameworks so far (React and VueJS). My original idea for the t
 - Remix
 - VueJS 3
 - React using Typescript
-- VueJS 2 a/o 3 using Typescript
