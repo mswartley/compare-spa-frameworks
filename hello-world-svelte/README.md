@@ -51,4 +51,22 @@ There are 2 types of routes:
 1. Pages - typically generate HTML to display to the user, rendered on both the client and the server by default.
 2. Endpoints - run only on the server, and typically fetch data from remote services.
 
+### Add Tailwind CSS
+Basically following the instructions here:
+https://tailwindcss.com/docs/guides/sveltekit
 
+Add dependencies and initialize config:
+```shell
+$ npm install -D tailwindcss postcss autoprefixer
+$ npx tailwindcss init tailwind.config.cjs -p
+$ mv postcss.config.js postcss.config.cjs
+```
+Add the paths to all of your template files in your `tailwind.config.cjs` file.
+
+Create (or modify the existing) `./src/app.css` file and add the `@tailwind` directives for each of Tailwind’s layers:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+Finally, import the CSS file into the main layout file `./src/routes/__layout.svelte`.
