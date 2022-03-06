@@ -45,7 +45,7 @@ There are 2 basic concepts:
 2. You crete pages by adding to the `src/routes` directory of the project. These will be server-rendered so that a users first visit to the app is as fast as possible, then a client-side app takes over.
 
 ### Routing
-At the heart of Svelte is a _filesysten-based router_.
+At the heart of Svelte is a _filesystem-based router_.
 
 There are 2 types of routes:
 1. Pages - typically generate HTML to display to the user, rendered on both the client and the server by default.
@@ -70,3 +70,5 @@ Create (or modify the existing) `./src/app.css` file and add the `@tailwind` dir
 @tailwind utilities;
 ```
 Finally, import the CSS file into the main layout file `./src/routes/__layout.svelte`.
+
+
