@@ -10,7 +10,7 @@
 </script>
 
 <div>
-	<h3 class="mb-1 text-xl font-normal">Counter: {count}</h3>
+	<h3 class="mb-1 text-xl font-normal">Counter: {count} (doubled: {doubled})</h3>
 	<!-- Need to do this weird thing (below) because the whitespace between elements *is*
 	  -- significant, (I believe) mostly because the Button elements are "inline-block".
 	  -->
