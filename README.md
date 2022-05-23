@@ -1,8 +1,9 @@
 # compare-spa-frameworks
 Build the same sample app in 3 SPA frameworks, styled with TailwindCSS.
 
-Well, only 2 SPA frameworks so far (React and VueJS). My original idea for the third was Svelte, but now I have other ideas for more examples of the same basic app:
-- Svelte (my original idea)
+The Svelte app is not quite complete, still need to add the form exampled. 
+
+Somem other ideas for more examples of the same basic app:
 - NextJS
 - Remix
 - VueJS 3
